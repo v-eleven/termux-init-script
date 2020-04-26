@@ -11,6 +11,9 @@ if [[ $result =~ y|Y && ! `cat $PREFIX/etc/apt/sources.list` =~ tsinghua ]]; the
     sed -i 's@^\(deb.*science stable\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/science-packages-24 science stable@' $PREFIX/etc/apt/sources.list.d/science.list
 fi
 
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
+
 # customize key
 mkdir -p $TERMUX_HOME_CONFIG_PATH
 if [ ! -f $TERMUX_HOME_CONFIG_PATH/termux.properties ]; then
@@ -30,9 +33,6 @@ sshd
 
 # open shared mobile storage
 termux-setup-storage
-
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
 
 # Base Tutorial
 # https://www.sqlsec.com/2018/05/termux.html
